@@ -1,5 +1,5 @@
 %macro PolyHeatMap(dat, var); 
-  ods select none;
+  ods exlude all;
   PROC CORR DATA=&dat. polychoric nosimple;* outplc=pc;
     VAR &var.;
     ods output polychoriccorr=pc;
