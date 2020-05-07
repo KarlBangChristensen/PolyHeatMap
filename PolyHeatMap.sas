@@ -1,9 +1,9 @@
 %macro PolyHeatMap(dat, var); 
   ods exclude all;
-  PROC CORR DATA=&dat. polychoric nosimple;* outplc=pc;
-    VAR &var.;
+  proc corr data=&dat. polychoric nosimple;
+    var &var.;
     ods output polychoriccorr=pc;
-  RUN;
+  run;
   ods exclude none;
   * stolen from https://blogs.sas.com/content/iml/2014/08/18/heat-map-in-sas.html;
   proc template;              
