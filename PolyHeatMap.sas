@@ -1,8 +1,10 @@
 %macro PolyHeatMap(dat, var); 
+  ods select none;
   PROC CORR DATA=&dat. polychoric nosimple;* outplc=pc;
     VAR &var.;
     ods output polychoriccorr=pc;
   RUN;
+  ods exclude none;
   * stolen from https://blogs.sas.com/content/iml/2014/08/18/heat-map-in-sas.html;
   proc template;              
     define statgraph heatmap;
